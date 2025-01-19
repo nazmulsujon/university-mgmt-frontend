@@ -1,46 +1,12 @@
-import React from 'react';
-import { Layout, Menu, MenuProps } from 'antd';
+import { Layout, Menu } from 'antd';
 import { Outlet } from 'react-router-dom';
-
+import { adminSidebarItems } from '../../routes/admin.routes';
 const { Header, Content, Footer, Sider } = Layout;
 
-const items: MenuProps["items"] = [
-    {
-        key: '1',
-        label: 'Dashboard',
-    },
-    {
-        key: '2',
-        label: 'Profile',
-    },
-    {
-        key: '3',
-        label: 'User Management',
-        children: [
-            {
-                key: '3-1',
-                label: 'Create User',
-            },
-            {
-                key: '3-2',
-                label: 'User List',
-            }
-        ]
-    },
-    {
-        key: '4',
-        label: 'Profile',
-    },
-]
-
-const MainLayout: React.FC = () => {
-
+const MainLayout = () => {
     return (
-        <Layout>
+        <Layout style={{ height: '100vh' }}>
             <Sider
-                style={{
-                    minHeight: '100vh',
-                }}
                 breakpoint="lg"
                 collapsedWidth="0"
                 onBreakpoint={(broken) => {
@@ -50,26 +16,32 @@ const MainLayout: React.FC = () => {
                     console.log(collapsed, type);
                 }}
             >
-                <div style={{
-                    color: "white",
-                    height: "4rem",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}>
-                    <h1>University Mgmt</h1>
+                <div
+                    style={{
+                        color: 'white',
+
+                        height: '4rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <h1>PH Uni</h1>
                 </div>
-                <div className="demo-logo-vertical" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={['4']}
+                    items={adminSidebarItems}
+                />
             </Sider>
             <Layout>
-                <Header style={{ padding: 0, }} />
+                <Header style={{ padding: 0 }} />
                 <Content style={{ margin: '24px 16px 0' }}>
                     <div
                         style={{
                             padding: 24,
                             minHeight: 360,
-
                         }}
                     >
                         <Outlet />
